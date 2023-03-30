@@ -22,3 +22,19 @@ class CustomerView(APIView):
             serializers.save()
             return Response(serializers.data)
         return Response(serializers.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+#-------------------------------------------------------------------------------------------
+
+# This code is to show the count of customer in the admin portal 
+
+#-------------------------------------------------------------------------------------------
+    
+def home(request):
+    customer = Customer.objects.all().count()
+    context = {
+        'customer':customer
+    }
+    return render(request,'home.html',context)
+
+
+#-------------------------------------------------------------------------------------------

@@ -8,6 +8,7 @@ class Product(models.Model):
     description = models.CharField(max_length=500)
     price = models.PositiveIntegerField()
     promo_price = models.PositiveIntegerField()
+    date = models.DateTimeField(auto_now_add=True)
     PRODUCT_SIZE=(
         ('Small','Small'),
         ('Large','Large'),
@@ -21,3 +22,6 @@ class Product(models.Model):
         ('Delivery','Delivery'),
     )
     status = models.CharField(max_length=20,choices=PRODUCT_STATUS)
+
+    def __str__(self):
+        return self.product_name
